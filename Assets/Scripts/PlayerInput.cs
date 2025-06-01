@@ -24,7 +24,7 @@ public class PlayerInput : MonoBehaviour
                 isGrabUnit = true;
                 grabbingUnit = hit.collider.gameObject.GetComponent<Unit>();
 
-                DragManager.Instance.ShowPreview_Unit(hit.collider.gameObject);
+                DragManager.Instance.ShowPreview_Unit(hit.collider.gameObject); //마우스 보임
             }
         }
         if(Input.GetMouseButtonUp(0))
@@ -48,9 +48,21 @@ public class PlayerInput : MonoBehaviour
                 {
                     Debug.Log(hit.collider.gameObject.name);
                     Tile hitTile = hit.collider.GetComponent<Tile>();
-                    if(hitTile.IsUnitLocate)
-                    {
 
+                    if(hitTile.IsUnitLocate && hitTile.GetUnit().gameObject != grabbingUnit.gameObject)
+                    {
+                        //여기가 합치는 부분인 듯.
+                        if (hitTile.GetUnit().unitType == grabbingUnit.unitType && hitTile.GetUnit().UnitStar == grabbingUnit.UnitStar)
+                        {
+                            Debug.Log("합쳐");
+                         
+                            //합치는 것, 끌어온 유닛 삭제하고 타일 초기화
+                            grabbingUnit.ClearTile();
+                            Destroy(grabbingUnit.gameObject);
+
+                            //업그레이드 부분
+                            hitTile.GetUnit().StateSetting(0, 1, 1, 1, hitTile.GetUnit().UnitStar + 1);
+                        }
                     }
                     else
                     {

@@ -21,4 +21,9 @@ public class Tile : MonoBehaviour
         placedUnit = null;
         isUnitLocate = false;
     }
+
+    public Unit GetUnit()
+    {
+        return placedUnit;
+    }
 }

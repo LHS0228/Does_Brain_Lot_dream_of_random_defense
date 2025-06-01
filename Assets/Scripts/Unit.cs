@@ -32,4 +32,9 @@ public class Unit : UnitState
 
         transform.position = targetTile.transform.position;
     }
+
+    public void ClearTile()
+    {
+        curTile.OutPlace();
+    }   
 }

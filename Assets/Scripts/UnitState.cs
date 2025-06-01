@@ -6,16 +6,19 @@ public enum UnitType { TungTungSahur, Tralarare, Larila, Bombardiro, Patapim, Bo
 public class UnitState : MonoBehaviour
 {
     public ObjectType type;
-    public UnitType UnitType;
+    public UnitType unitType;
 
-    public int attack;
-    public int maxHp;
-    public int currentHp;
-    public int maxMana;
-    public int currentMana;
-    public float attackRange;
+    [SerializeField] private int attack;
+    [SerializeField] private int maxHp;
+    [SerializeField] private int currentHp;
+    [SerializeField] private int maxMana;
+    [SerializeField] private int currentMana;
+    [SerializeField] private float attackRange;
+    [SerializeField] private int unitStar = 0;
 
-    public void Setting(int _attack, int _maxHp, int _maxMana, int _attackRange)
+    public int UnitStar => unitStar;
+
+    public void StateSetting(int _attack, int _maxHp, int _maxMana, int _attackRange, int _unitStar)
     {
         attack = _attack;
         
@@ -26,5 +29,7 @@ public class UnitState : MonoBehaviour
         currentMana = _maxMana;
 
         attackRange = _attackRange;
+
+        unitStar = _unitStar;
     }
 }
