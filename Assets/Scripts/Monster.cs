@@ -18,7 +18,7 @@ public class Monster : MonoBehaviour
     public virtual void Init(float speed, float MaxHp, MovementTarget movementTarget)
     {
         this.speed = speed;
-        this.MaxHp = MaxHp;
+        this.hp = MaxHp;
         this.movementTarget = movementTarget;
         rb = GetComponent<Rigidbody2D>();
     }
