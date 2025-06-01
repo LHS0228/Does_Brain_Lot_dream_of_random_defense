@@ -41,7 +41,7 @@ public class MonsterManager : MonoBehaviour
     public void RemoveMonster(Monster target)
     {
         monsters.Remove(target);
-        Destroy(target, 0.1f);
+        Destroy(target.gameObject, 0.1f);
     }
 
     public IEnumerator MonsterSpawnRoutine()
