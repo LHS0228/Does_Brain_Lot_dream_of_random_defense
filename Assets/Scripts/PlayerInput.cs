@@ -23,6 +23,8 @@ public class PlayerInput : MonoBehaviour
                 Debug.Log(hit.collider.gameObject.name);
                 isGrabUnit = true;
                 grabbingUnit = hit.collider.gameObject.GetComponent<Unit>();
+
+                DragManager.Instance.ShowPreview_Unit(hit.collider.gameObject);
             }
         }
         if(Input.GetMouseButtonUp(0))
@@ -56,11 +58,16 @@ public class PlayerInput : MonoBehaviour
                     }
                 }
 
+                DragManager.Instance.HidePreview_Unit();
 
                 isGrabUnit = false;
                 grabbingUnit = null;
             }
+        }
 
+        if (isGrabUnit)
+        {
+            DragManager.Instance.UpdatePreviewPostion();
         }
 
     }

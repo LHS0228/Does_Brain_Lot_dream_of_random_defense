@@ -6,6 +6,7 @@ public class RangeVisualizer : MonoBehaviour
     public Material rangeMaterial;
     public float range = 3f;
     public bool draw = false;
+
     void OnDrawGizmos()
     {
         if (draw == false) return;

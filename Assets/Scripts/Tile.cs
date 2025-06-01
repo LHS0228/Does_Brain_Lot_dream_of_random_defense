@@ -15,6 +15,7 @@ public class Tile : MonoBehaviour
         placedUnit = unit;
         isUnitLocate = true;
     }
+
     public void OutPlace()
     {
         placedUnit = null;
