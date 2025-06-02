@@ -1,7 +1,7 @@
 using Unity.VisualScripting;
 using UnityEngine;
 
-public enum AttackType { SingleTarget, RangeTarget, WideAreaTarget }
+public enum AttackType { SingleTarget, MultiTarget, WideAreaTarget }
 public class Tower : MonoBehaviour
 {
     public string towerName;
@@ -15,7 +15,7 @@ public class Tower : MonoBehaviour
     {
 
     }
-    public virtual void AttackRangeTarget()
+    public virtual void AttackMultiTarget()
     {
 
     }
