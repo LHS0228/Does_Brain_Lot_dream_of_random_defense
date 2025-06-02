@@ -31,10 +31,11 @@ public class MonsterManager : MonoBehaviour
         Monster m = spawnedM.GetComponent<Monster>();
         m.Init(3, 500, spawnPos.GetComponent<MovementTarget>());
         monsters.Add(m);
+        UIManager.Instance.MonsterCounting(currentMonsterCnt);
     }
     public void SpawnBoss()
     {
-
+        UIManager.Instance.MonsterCounting(currentMonsterCnt);
     }
 
     // 몬스터가 피해 받아서 사라질 때
@@ -42,11 +43,12 @@ public class MonsterManager : MonoBehaviour
     {
         monsters.Remove(target);
         Destroy(target.gameObject, 0.1f);
+        UIManager.Instance.MonsterCounting(currentMonsterCnt);
     }
 
     public IEnumerator MonsterSpawnRoutine()
     {
-        for(int spawnCnt = 0; spawnCnt < 30; ++spawnCnt)
+        for(int spawnCnt = 0; spawnCnt < 20; ++spawnCnt)
         {
             SpawnMonster();
             yield return new WaitForSeconds(0.3f);
