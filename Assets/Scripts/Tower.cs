@@ -11,6 +11,8 @@ public class Tower : MonoBehaviour
     public float attackCooltime;
     public AttackType attackType;
 
+    [SerializeField] private int towerStar = 0;
+
     public virtual void AttackSingleTarget()
     {
 
