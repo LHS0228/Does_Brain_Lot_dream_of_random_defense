@@ -12,18 +12,18 @@ public class DragManager : MonoBehaviour
     }
 
     //마우스 유닛 드래그 할 때 보이게 하기
-    public void ShowPreview_Unit(GameObject unit)
+    public void ShowPreview_Tower(GameObject tower)
     {
         if (previewInstance == null)
         {
             previewInstance = Instantiate(previewPrefab);
-            previewInstance.GetComponent<SpriteRenderer>().sprite = unit.GetComponent<SpriteRenderer>().sprite;
-            previewInstance.transform.localScale = unit.transform.localScale;
+            previewInstance.GetComponent<SpriteRenderer>().sprite = tower.GetComponent<SpriteRenderer>().sprite;
+            previewInstance.transform.localScale = tower.transform.localScale;
         }
     }
 
     //마우스 유닛 드래그 할 때 안보이게 하기
-    public void HidePreview_Unit()
+    public void HidePreview_Tower()
     {
         Destroy(previewInstance);
         previewInstance = null;

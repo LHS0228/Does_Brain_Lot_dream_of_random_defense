@@ -20,7 +20,7 @@ public class TileManager : MonoBehaviour
         List<Tile> list = new List<Tile>();
         foreach (Tile tile in tiles)
         {
-            if (tile.IsUnitLocate == false) list.Add(tile);
+            if (tile.IsTowerLocate == false) list.Add(tile);
         }
         if (list.Count == 0)
             return null;

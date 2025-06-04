@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 7733514499226569317}
   - component: {fileID: 890508301135315935}
   - component: {fileID: 1308499349463097787}
-  - component: {fileID: 1215266035845835834}
   - component: {fileID: -559063613565546681}
   m_Layer: 6
   m_Name: Unit(temp) 3
@@ -140,18 +139,6 @@ PolygonCollider2D:
       - {x: -0.5, y: -0.28866667}
       - {x: 0.5, y: -0.28866667}
   m_UseDelaunayMesh: 0
---- !u!114 &1215266035845835834
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 639916068453680758}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6af514724b0a5c64188d93d4be1bcc36, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &-559063613565546681
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -164,9 +151,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16fa2861b62e0b54b992107f93daaf3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  towerName: 
+  towerType: 0
   attackDamage: 0
   attackRange: 0
   attackSpeed: 0
   attackCooltime: 0
   attackType: 0
+  towerStar: 0

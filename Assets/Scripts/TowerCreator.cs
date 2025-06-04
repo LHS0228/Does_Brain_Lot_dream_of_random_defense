@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class UnitCreator : MonoBehaviour
+public class TowerCreator : MonoBehaviour
 {
     [SerializeField]
     GameObject[] units = new GameObject[5];
@@ -14,9 +14,9 @@ public class UnitCreator : MonoBehaviour
         int randomTypeUnit = Random.Range(0, units.Length);
         
         GameObject spawnedUnit = Instantiate(units[randomTypeUnit]);
-        Unit unit = spawnedUnit.GetComponent<Unit>();
+        Tower tower = spawnedUnit.GetComponent<Tower>();
 
 
-        unit.Init(spawnTile);
+        tower.Init(spawnTile);
     }
 }

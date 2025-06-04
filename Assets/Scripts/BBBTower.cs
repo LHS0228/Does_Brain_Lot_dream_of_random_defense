@@ -7,7 +7,7 @@ public class BBBTower : Tower
     private void Start()
     {
         attackType = AttackType.MultiTarget;
-        towerName = "BBB";
+        towerType = TowerType.Bombardiro;
         attackDamage = 250f;
         attackRange = 3f;
         attackSpeed = 1f;

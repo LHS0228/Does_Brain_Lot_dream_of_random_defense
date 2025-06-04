@@ -5,7 +5,7 @@ public class CCCTower : Tower
     private void Start()
     {
         attackType = AttackType.SingleTarget;
-        towerName = "CCC";
+        towerType = TowerType.Tralarare;
         attackDamage = 180f;
         attackRange = 3f;
         attackSpeed = 1f;

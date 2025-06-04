@@ -5,7 +5,7 @@ public class EEETower : Tower
     private void Start()
     {
         attackType = AttackType.SingleTarget;
-        towerName = "EEE";
+        towerType = TowerType.Larila;
         attackDamage = 180f;
         attackRange = 3f;
         attackSpeed = 1f;

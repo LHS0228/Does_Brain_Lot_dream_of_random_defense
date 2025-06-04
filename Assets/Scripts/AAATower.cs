@@ -7,7 +7,7 @@ public class AAATower : Tower
     private void Start()
     {
         attackType = AttackType.SingleTarget;
-        towerName = "AAA";
+        towerType = TowerType.TungTungSahur;
         attackDamage = 180f;
         attackRange = 3f;
         attackSpeed = 1f;

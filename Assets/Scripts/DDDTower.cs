@@ -5,7 +5,7 @@ public class DDDTower : Tower
     private void Start()
     {
         attackType = AttackType.SingleTarget;
-        towerName = "DDD";
+        towerType = TowerType.Patapim;
         attackDamage = 180f;
         attackRange = 3f;
         attackSpeed = 1f;

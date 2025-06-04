@@ -5,25 +5,25 @@ using UnityEngine;
 
 public class Tile : MonoBehaviour 
 {
-    bool isUnitLocate = false;
-    public bool IsUnitLocate => isUnitLocate;
-    Unit placedUnit = null;
-    Unit PlacedUnit => placedUnit;
+    bool isTowerLocate = false;
+    public bool IsTowerLocate => isTowerLocate;
+    Tower placedTower = null;
+    Tower PlacedTower => placedTower;
 
-    public void InPlace(Unit unit)
+    public void InPlace(Tower tower)
     {
-        placedUnit = unit;
-        isUnitLocate = true;
+        placedTower = tower;
+        isTowerLocate = true;
     }
 
     public void OutPlace()
     {
-        placedUnit = null;
-        isUnitLocate = false;
+        placedTower = null;
+        isTowerLocate = false;
     }
 
-    public Unit GetUnit()
+    public Tower GetTower()
     {
-        return placedUnit;
+        return placedTower;
     }
 }
