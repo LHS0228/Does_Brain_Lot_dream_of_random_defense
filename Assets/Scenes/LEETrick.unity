@@ -353,7 +353,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d4a09230c6aa4d448189fa6d53fee5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Instance: {fileID: 0}
   button_Upgrade_TungTungSahur: {fileID: 1057982760}
   button_Upgrade_Tralarare: {fileID: 1057146042}
   button_Upgrade_Larila: {fileID: 509381979}

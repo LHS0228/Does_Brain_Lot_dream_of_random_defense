@@ -1,3 +1,4 @@
+using NUnit.Framework.Constraints;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -65,6 +66,9 @@ public class PlayerInput : MonoBehaviour
                             //합치는 것, 끌어온 유닛 삭제하고 타일 초기화
                             grabbingUnit.ClearTile();
                             Destroy(grabbingUnit.gameObject);
+
+                            //소리 입혀
+                            EffectManager.Instance.SpawnEffect(EffectName.dust, hit.collider.gameObject.transform.position);
 
                             //업그레이드 부분
                             hitTile.GetUnit().StateSetting(0, 1, 1, 1, hitTile.GetUnit().UnitStar + 1);
