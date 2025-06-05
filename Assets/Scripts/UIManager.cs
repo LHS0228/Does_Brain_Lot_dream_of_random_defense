@@ -37,4 +37,14 @@ public class UIManager : MonoBehaviour
     {
         waveTimer.text = $"다음 웨이브 까지{WaveManager.Instance.RemainWaveTime :F0}";
     }
+
+    public void GoldUIUpdate()
+    {
+        GoldUI.text = $"{MoneyManager.Instance.Gold}";
+    }
+
+    public void GemUIUpdate()
+    {
+        GemUI.text = $"{MoneyManager.Instance.Gem}";
+    }
 }

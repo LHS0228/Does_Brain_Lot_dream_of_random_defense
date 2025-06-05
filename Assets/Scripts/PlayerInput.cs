@@ -102,8 +102,10 @@ public class PlayerInput : MonoBehaviour
 
             if(hit.collider != null)
             {
-                //여기에 돈 얻는 코드도 작성 부탁 (완성 된다면)
-                hit.collider.GetComponent<Tower>().ClearTile();
+                Tower towerComp = hit.collider.GetComponent<Tower>();
+                MoneyManager.Instance.UpdateGold(towerComp.sellGold);
+                Debug.Log(towerComp.sellGold);
+                towerComp.ClearTile();
                 Destroy(hit.collider.gameObject);
 
                 Debug.Log("판매");

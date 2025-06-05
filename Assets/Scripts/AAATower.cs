@@ -70,6 +70,4 @@ public class AAATower : Tower
         Gizmos.color = Color.white;
         Gizmos.DrawWireSphere(transform.position, attackRange);
     }
-
-
 }

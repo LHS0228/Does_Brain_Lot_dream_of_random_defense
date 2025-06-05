@@ -16,6 +16,7 @@ public class Tower : MonoBehaviour
     public float attackCooltime;
     public AttackType attackType;
     public int towerStar = 0;
+    public int sellGold = 0;
 
     private void Update()
     {
