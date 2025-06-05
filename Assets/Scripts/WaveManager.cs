@@ -14,7 +14,7 @@ public class WaveManager : MonoBehaviour
     int waveCnt = 1;
 
     float OneWaveTime => oneWaveTime;
-    float RemainWaveTime => remainWaveTime;
+    public float RemainWaveTime => remainWaveTime;
     public int WaveCnt => waveCnt;
 
     void Awake()
@@ -29,8 +29,14 @@ public class WaveManager : MonoBehaviour
     }
     public void StartWave()
     {
+        UIManager.Instance.WaveCounting(WaveCnt);
         isWaveOngoing = true;
         StartCoroutine(MonsterManager.Instance.MonsterSpawnRoutine());
+    }
+
+    public void NextWave()
+    {
+        remainWaveTime = 0f;
     }
 
     void Update()
@@ -41,6 +47,7 @@ public class WaveManager : MonoBehaviour
         if(remainWaveTime <= 0)
         {
             waveCnt++;
+            UIManager.Instance.WaveCounting(WaveCnt);
             if (waveCnt % 5 == 0)
                 MonsterManager.Instance.SpawnBoss();
             else
