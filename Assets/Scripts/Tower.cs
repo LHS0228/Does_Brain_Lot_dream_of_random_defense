@@ -89,23 +89,26 @@ public class Tower : MonoBehaviour
 
     public void AttackReloding()
     {
-        switch (towerType)
+        if (attackDamage <= 0)
         {
-            case TowerType.TungTungSahur:
-                attackDamage = 1 * UpgradeManager.Instance.up_Level_TungTungSahur;
-                break;
-            case TowerType.Tralarare:
-                attackDamage = 1 * UpgradeManager.Instance.up_Level_Tralarare;
-                break;
-            case TowerType.Larila:
-                attackDamage = 1 * UpgradeManager.Instance.up_Level_Larila;
-                break;
-            case TowerType.Bombardiro:
-                attackDamage = 1 * UpgradeManager.Instance.up_Level_Bombardiro;
-                break;
-            case TowerType.Patapim:
-                attackDamage = 1 * UpgradeManager.Instance.up_Level_Patapim;
-                break;
+            switch (towerType)
+            {
+                case TowerType.TungTungSahur:
+                    attackDamage = 1 * UpgradeManager.Instance.up_Level_TungTungSahur;
+                    break;
+                case TowerType.Tralarare:
+                    attackDamage = 1 * UpgradeManager.Instance.up_Level_Tralarare;
+                    break;
+                case TowerType.Larila:
+                    attackDamage = 1 * UpgradeManager.Instance.up_Level_Larila;
+                    break;
+                case TowerType.Bombardiro:
+                    attackDamage = 1 * UpgradeManager.Instance.up_Level_Bombardiro;
+                    break;
+                case TowerType.Patapim:
+                    attackDamage = 1 * UpgradeManager.Instance.up_Level_Patapim;
+                    break;
+            }
         }
     }
 }
