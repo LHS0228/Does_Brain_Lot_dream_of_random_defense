@@ -4,14 +4,10 @@ public class AAATower : Tower
 {
     public GameObject bulletPrefab;
     private float attackTimer = 0f;
+
     private void Start()
     {
-        attackType = AttackType.SingleTarget;
-        towerType = TowerType.TungTungSahur;
-        attackDamage = 180f;
-        attackRange = 3f;
-        attackSpeed = 1f;
-        attackCooltime = 1f;
+        Init();
     }
 
     private void FixedUpdate()
@@ -24,6 +20,18 @@ public class AAATower : Tower
             attackTimer = 0f;
             AttackSingleTarget();
         }
+    }
+
+    public override void Init()
+    {
+        attackType = AttackType.SingleTarget;
+        towerType = TowerType.TungTungSahur;
+        attackDamage = 180f;
+        attackRange = 3f;
+        attackSpeed = 1f;
+        attackCooltime = 1f;
+        towerStar = 1;
+        sellGold = 0;
     }
 
     // 단일 타격 함수

@@ -23,6 +23,20 @@ public class Tower : MonoBehaviour
         AttackReloding();
     }
 
+    public virtual void Init()
+    {
+        attackType = AttackType.SingleTarget;
+        towerType = TowerType.Patapim;
+        attackDamage = 180f;
+        attackRange = 3f;
+        attackSpeed = 1f;
+        attackCooltime = 1f;
+        towerStar = 1;
+        sellGold = 0;
+
+        //여기에 초기화하는 코드 넣어줘
+    }
+
     public virtual void AttackSingleTarget()
     {
 
@@ -92,7 +106,7 @@ public class Tower : MonoBehaviour
         switch (towerType)
         {
             case TowerType.TungTungSahur:
-                attackDamage = 1 * UpgradeManager.Instance.up_Level_TungTungSahur;
+                attackDamage = /*추가 업글 공격력*/ (200 * (UpgradeManager.Instance.up_Level_TungTungSahur - 1) * 0.7f) + /*기본 공격력*/ 1;
                 break;
             case TowerType.Tralarare:
                 attackDamage = 1 * UpgradeManager.Instance.up_Level_Tralarare;
@@ -105,6 +119,31 @@ public class Tower : MonoBehaviour
                 break;
             case TowerType.Patapim:
                 attackDamage = 1 * UpgradeManager.Instance.up_Level_Patapim;
+                break;
+        }
+
+        switch (towerStar)
+        {
+            case 1:
+                gameObject.GetComponent<SpriteRenderer>().color = new Color(255, 0, 0);
+                break;
+            case 2:
+                gameObject.GetComponent<SpriteRenderer>().color = new Color(255, 94, 0);
+                break;
+            case 3:
+                gameObject.GetComponent<SpriteRenderer>().color = new Color(255, 255, 0);
+                break;
+            case 4:
+                gameObject.GetComponent<SpriteRenderer>().color = new Color(0, 255, 0);
+                break;
+            case 5:
+                gameObject.GetComponent<SpriteRenderer>().color = new Color(0, 0, 255);
+                break;
+            case 6:
+                gameObject.GetComponent<SpriteRenderer>().color = new Color(255, 94, 255);
+                break;
+            default:
+                Debug.Log("색깔 코드 버그남");
                 break;
         }
     }
