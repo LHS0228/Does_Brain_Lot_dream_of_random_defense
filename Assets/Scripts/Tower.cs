@@ -34,7 +34,7 @@ public class Tower : MonoBehaviour
         towerStar = 1;
         sellGold = 0;
 
-        //¿©±â¿¡ ÃÊ±âÈ­ÇÏ´Â ÄÚµå ³Ö¾îÁà
+        //ï¿½ï¿½ï¿½â¿¡ ï¿½Ê±ï¿½È­ï¿½Ï´ï¿½ ï¿½Úµï¿½ ï¿½Ö¾ï¿½ï¿½ï¿½
     }
 
     public virtual void AttackSingleTarget()
@@ -103,23 +103,26 @@ public class Tower : MonoBehaviour
 
     public void AttackReloding()
     {
-        switch (towerType)
+        if (attackDamage <= 0)
         {
-            case TowerType.TungTungSahur:
-                attackDamage = /*Ãß°¡ ¾÷±Û °ø°Ý·Â*/ (200 * (UpgradeManager.Instance.up_Level_TungTungSahur - 1) * 0.7f) + /*±âº» °ø°Ý·Â*/ 1;
-                break;
-            case TowerType.Tralarare:
-                attackDamage = 1 * UpgradeManager.Instance.up_Level_Tralarare;
-                break;
-            case TowerType.Larila:
-                attackDamage = 1 * UpgradeManager.Instance.up_Level_Larila;
-                break;
-            case TowerType.Bombardiro:
-                attackDamage = 1 * UpgradeManager.Instance.up_Level_Bombardiro;
-                break;
-            case TowerType.Patapim:
-                attackDamage = 1 * UpgradeManager.Instance.up_Level_Patapim;
-                break;
+            switch (towerType)
+            {
+                case TowerType.TungTungSahur:
+                    attackDamage = 1 * UpgradeManager.Instance.up_Level_TungTungSahur;
+                    break;
+                case TowerType.Tralarare:
+                    attackDamage = 1 * UpgradeManager.Instance.up_Level_Tralarare;
+                    break;
+                case TowerType.Larila:
+                    attackDamage = 1 * UpgradeManager.Instance.up_Level_Larila;
+                    break;
+                case TowerType.Bombardiro:
+                    attackDamage = 1 * UpgradeManager.Instance.up_Level_Bombardiro;
+                    break;
+                case TowerType.Patapim:
+                    attackDamage = 1 * UpgradeManager.Instance.up_Level_Patapim;
+                    break;
+            }
         }
 
         switch (towerStar)
@@ -143,7 +146,7 @@ public class Tower : MonoBehaviour
                 gameObject.GetComponent<SpriteRenderer>().color = new Color(255, 94, 255);
                 break;
             default:
-                Debug.Log("»ö±ò ÄÚµå ¹ö±×³²");
+                Debug.Log("ï¿½ï¿½ï¿½ï¿½ ï¿½Úµï¿½ ï¿½ï¿½ï¿½×³ï¿½");
                 break;
         }
     }
