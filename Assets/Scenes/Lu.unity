@@ -3693,6 +3693,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   monster_normal: {fileID: 2598684453456234745, guid: 2ac536a81b817484c857fd3ea494285c, type: 3}
   monster_boss: {fileID: 2598684453456234745, guid: 2ac536a81b817484c857fd3ea494285c, type: 3}
+  waveManager: {fileID: 1984458092}
   spawnPos: {fileID: 995269303}
 --- !u!4 &1523442936
 Transform:

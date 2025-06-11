@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,6 +17,10 @@ public class MonsterManager : MonoBehaviour
     List<Monster> monsters = new List<Monster>();
     public int currentMonsterCnt => monsters.Count;
 
+    public WaveManager waveManager;
+    private float increaseHp = 0.1f;
+    private float hp;
+
     [SerializeField]
     Transform spawnPos;
     private void Awake()
@@ -23,15 +28,20 @@ public class MonsterManager : MonoBehaviour
         if (instance == null)
             instance = this;
         else Destroy(gameObject);
+
     }
 
     public void SpawnMonster()
     {
         GameObject spawnedM = Instantiate(monster_normal, spawnPos.position, spawnPos.rotation);
         Monster m = spawnedM.GetComponent<Monster>();
-        m.Init(3, 500, spawnPos.GetComponent<MovementTarget>());
+        UpdateMonsterHp();
+        m.Init(3, hp, spawnPos.GetComponent<MovementTarget>());
         monsters.Add(m);
         UIManager.Instance.MonsterCounting(currentMonsterCnt);
+
+        Debug.Log($"몬스터 체력 {hp}");
+
     }
     public void SpawnBoss()
     {
@@ -53,5 +63,11 @@ public class MonsterManager : MonoBehaviour
             SpawnMonster();
             yield return new WaitForSeconds(0.3f);
         }
+    }
+
+    public void UpdateMonsterHp()
+    {
+        int curWave = waveManager.WaveCnt;
+        hp = 500 * MathF.Pow(1 + increaseHp, curWave - 1);
     }
 }
