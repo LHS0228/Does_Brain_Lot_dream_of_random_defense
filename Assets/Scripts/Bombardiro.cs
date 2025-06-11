@@ -1,17 +1,23 @@
 using UnityEngine;
 
-public class DDDTower : Tower
+public class Bombardiro : Tower
 {
     public GameObject bulletPrefab;
     private float attackTimer = 0f;
     private int attackCount = 0;
     private void Start()
     {
-        attackType = AttackType.SingleTarget;
-        towerType = TowerType.Patapim;
-        attackDamage = 180f;
-        attackRange = 3f;
-        attackCooltime = 1f;
+        Init();
+    }
+    public override void Init()
+    {
+        attackType = AttackType.MultiTarget;
+        towerType = TowerType.Bombardiro;
+        attackDamage = 250f;
+        attackRange = 3.5f;
+        attackCooltime = 1;
+        towerStar = 1;
+        sellGold = 0;
     }
 
     private void FixedUpdate()
@@ -28,8 +34,6 @@ public class DDDTower : Tower
 
     public override void AttackMultiTarget()
     {
-        Debug.Log("BBB 공격");
-
         Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, attackRange);
 
         Transform target = null;
@@ -42,8 +46,6 @@ public class DDDTower : Tower
             // 태그 확인
             if (hit.CompareTag("Enemy"))
             {
-                // 아래는 확인용 로그 출력 없애도댐
-                Debug.Log("타겟 범위 내에");
                 // 타워와 타겟위치 사이의 거리
                 float dist = Vector3.Distance(transform.position, hit.transform.position);
                 // 타겟과의 거리 < 무한대 가까우면 mindist설정 대충 가까운 애 확인하는거임
@@ -54,13 +56,32 @@ public class DDDTower : Tower
                 }
             }
         }
-        // 타겟 있으면 bullet 소환 그 다음 공격력 설정 및 타겟 설정 ㅇㅇ
-        if (target != null)
+
+        attackCount++;
+
+        if (attackCount == 5) // 5회 공격
         {
-            GameObject bulletObj = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
-            SplashBullet bullet = bulletObj.GetComponent<SplashBullet>();
-            bullet.bulletDamage = attackDamage;
-            bullet.SetTarget(target);
+            if (target != null)
+            {
+                GameObject bulletObj = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
+                SplashBullet bullet = bulletObj.GetComponent<SplashBullet>();
+                bullet.bulletDamage = attackDamage * 5;
+                bullet.SetTarget(target);
+
+                Debug.Log($"봄바 5회 공격력 {bullet.bulletDamage}");
+                attackCount = 0;
+            }
+        }
+        else
+        {
+            // 타겟 있으면 bullet 소환 그 다음 공격력 설정 및 타겟 설정 ㅇㅇ
+            if (target != null)
+            {
+                GameObject bulletObj = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
+                SplashBullet bullet = bulletObj.GetComponent<SplashBullet>();
+                bullet.bulletDamage = attackDamage;
+                bullet.SetTarget(target);
+            }
         }
     }
 

@@ -47,8 +47,6 @@ public class Larila : Tower
             // 태그 확인
             if (hit.CompareTag("Enemy"))
             {
-                // 아래는 확인용 로그 출력 없애도댐
-                Debug.Log("타겟 범위 내에");
                 // 타워와 타겟위치 사이의 거리
                 float dist = Vector3.Distance(transform.position, hit.transform.position);
                 // 타겟과의 거리 < 무한대 가까우면 mindist설정 대충 가까운 애 확인하는거임

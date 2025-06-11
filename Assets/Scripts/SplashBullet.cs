@@ -4,13 +4,19 @@ public class SplashBullet : MonoBehaviour
 {
     private Transform target;
     private Monster targetEnemy;
-    public float bulletSpeed = 5f;
+    public float bulletSpeed = 10f;
     public float bulletDamage;
     public float radius = 1.3f; // 데미지를 줄 범위 (반경)
 
+    // 슬로우 변수
     public bool isSlowing = false;
     public float slowRatio; // 0.5f 2초 ?
     public float slowDuration;
+
+    // 속박 변수
+    public bool isBinding = false;
+    public float bindDuration;
+
 
     // 타겟과 정보 가져오기
     public void SetTarget(Transform enemy)
@@ -59,6 +65,16 @@ public class SplashBullet : MonoBehaviour
         {
             Slow slow = new Slow(MonsterDebuffT.Slow, slowDuration, enemy, slowRatio);
             enemy.AddMonsterDebuff(slow);
+        }
+
+        if(isBinding == true) // 속박 디버프
+        {
+            if (Random.value < 0.25f)
+            {
+                Debug.Log("속박 발동");
+                Bind bind = new Bind(MonsterDebuffT.Bind, bindDuration, enemy);
+                enemy.AddMonsterDebuff(bind);
+            }
         }
 
         if (enemy != null)

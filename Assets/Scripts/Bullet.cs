@@ -4,7 +4,7 @@ public class Bullet : MonoBehaviour
 {
     private Transform target;
     private Monster targetEnemy;
-    public float bulletSpeed = 5f;
+    public float bulletSpeed = 10f;
     public float bulletDamage;
 
     public bool isBleeding = false;
