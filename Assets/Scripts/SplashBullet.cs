@@ -52,7 +52,7 @@ public class SplashBullet : MonoBehaviour
 
             if (distance < 1.5f)
             {
-                Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, 3.0f);
+                Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, 1.3f);
 
                 // 찾은 애들에게 전부 1뎀
                 foreach (Collider2D hit in hits)
@@ -67,5 +67,10 @@ public class SplashBullet : MonoBehaviour
                 //enemy.Damaged(bulletDamage);
             }
         }
+    }
+    public void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, 1.3f);
     }
 }

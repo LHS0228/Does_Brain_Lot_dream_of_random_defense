@@ -22,6 +22,11 @@ public class Monster : MonoBehaviour
         this.movementTarget = movementTarget;
         rb = GetComponent<Rigidbody2D>();
     }
+
+    public void AddMonsterDebuff(MonsterDebuff debuff)
+    {
+        debuffs.Add(debuff);
+    }
     void Update()
     {
         isBinding = false;

@@ -1,9 +1,10 @@
 using UnityEngine;
 
-public class AAATower : Tower
+public class Tralarare : Tower
 {
     public GameObject bulletPrefab;
     private float attackTimer = 0f;
+    private int attackCount = 0;
 
     private void Start()
     {
@@ -25,11 +26,11 @@ public class AAATower : Tower
     public override void Init()
     {
         attackType = AttackType.SingleTarget;
-        towerType = TowerType.TungTungSahur;
-        attackDamage = 180f;
-        attackRange = 3f;
+        towerType = TowerType.Tralarare;
+        attackDamage = 200f;
+        attackRange = 5f;
         attackSpeed = 1f;
-        attackCooltime = 1f;
+        attackCooltime = 0.6666f;
         towerStar = 1;
         sellGold = 0;
     }
@@ -63,14 +64,41 @@ public class AAATower : Tower
                 }
             }
         }
-        // 타겟 있으면 bullet 소환 그 다음 공격력 설정 및 타겟 설정 ㅇㅇ
-        if (target != null)
+
+        attackCount++;
+
+        if( attackCount == 3) // 4초동안 공격력 250% 출혈 아직 미구현
         {
-            GameObject bulletObj = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
-            Bullet bullet = bulletObj.GetComponent<Bullet>();
-            bullet.bulletDamage = attackDamage;
-            bullet.SetTarget(target);
+            if (target != null)
+            {
+                
+
+                GameObject bulletObj = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
+                Bullet bullet = bulletObj.GetComponent<Bullet>();
+
+                //출혈 변수 조정
+                bullet.isBleeding = true;
+                bullet.totalBleedDamage = attackDamage * 2.5f;
+                bullet.bleedDuration = 2f;
+
+                bullet.SetTarget(target);
+
+                Debug.Log($"공격력 {bullet.totalBleedDamage}");
+                attackCount = 0;
+            }
         }
+        else
+        {
+            // 타겟 있으면 bullet 소환 그 다음 공격력 설정 및 타겟 설정 ㅇㅇ
+            if (target != null)
+            {
+                GameObject bulletObj = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
+                Bullet bullet = bulletObj.GetComponent<Bullet>();
+                bullet.bulletDamage = attackDamage;
+                bullet.SetTarget(target);
+            }
+        }
+
     }
     // 이거는 사거리 확인차 만든 거
     public override void OnDrawGizmos()

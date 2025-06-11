@@ -1107,6 +1107,51 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &498442788
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 498442790}
+  - component: {fileID: 498442789}
+  m_Layer: 0
+  m_Name: Effect
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &498442789
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 498442788}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 130a23d0672b4ab4c8f3eda961d6ad99, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dustEffect: {fileID: 7171849144937372959, guid: 574005672dd9b9a42ae11f30a71e9dde, type: 3}
+--- !u!4 &498442790
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 498442788}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1182.9246, y: 612.6615, z: -9.594197}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &509381975
 GameObject:
   m_ObjectHideFlags: 0
@@ -4761,11 +4806,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   units:
-  - {fileID: 639916068453680758, guid: 7d8ac53117c92fe478a45963a0f9800a, type: 3}
-  - {fileID: 639916068453680758, guid: 7d8ac53117c92fe478a45963a0f9800a, type: 3}
-  - {fileID: 639916068453680758, guid: 7d8ac53117c92fe478a45963a0f9800a, type: 3}
-  - {fileID: 639916068453680758, guid: 7d8ac53117c92fe478a45963a0f9800a, type: 3}
-  - {fileID: 639916068453680758, guid: 7d8ac53117c92fe478a45963a0f9800a, type: 3}
+  - {fileID: 639916068453680758, guid: 91e8b7a70b150d4409b56a8630098508, type: 3}
 --- !u!4 &1859248729
 Transform:
   m_ObjectHideFlags: 0
@@ -5536,3 +5577,4 @@ SceneRoots:
   - {fileID: 137241920}
   - {fileID: 455273454}
   - {fileID: 659324777}
+  - {fileID: 498442790}

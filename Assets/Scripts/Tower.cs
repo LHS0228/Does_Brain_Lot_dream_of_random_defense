@@ -125,7 +125,7 @@ public class Tower : MonoBehaviour
             }
         }
 
-        switch (towerStar)
+        /*switch (towerStar)
         {
             case 1:
                 gameObject.GetComponent<SpriteRenderer>().color = new Color(255, 0, 0);
@@ -148,6 +148,6 @@ public class Tower : MonoBehaviour
             default:
                 Debug.Log("���� �ڵ� ���׳�");
                 break;
-        }
+        }*/
     }
 }

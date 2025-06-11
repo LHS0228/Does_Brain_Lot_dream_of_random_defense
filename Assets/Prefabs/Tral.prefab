@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 7733514499226569317}
   - component: {fileID: 890508301135315935}
   - component: {fileID: 1308499349463097787}
-  - component: {fileID: 7691857519442235248}
+  - component: {fileID: 4477010636534028689}
   m_Layer: 6
-  m_Name: Unit(temp) 1
+  m_Name: Tral
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -139,7 +139,7 @@ PolygonCollider2D:
       - {x: -0.5, y: -0.28866667}
       - {x: 0.5, y: -0.28866667}
   m_UseDelaunayMesh: 0
---- !u!114 &7691857519442235248
+--- !u!114 &4477010636534028689
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -148,14 +148,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 639916068453680758}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a7c554d291f082b4bb21d5623200f6cf, type: 3}
+  m_Script: {fileID: 11500000, guid: 1bed5695f51ef1649b764749a40d4b70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  towerType: 0
+  towerType: 1
   attackDamage: 0
   attackRange: 0
   attackSpeed: 0
   attackCooltime: 0
-  attackType: 1
+  attackType: 0
   towerStar: 0
-  bulletPrefab: {fileID: 3678528535242544938, guid: 9af43071e4463db42a19ead78caa5123, type: 3}
+  sellGold: 0
+  bulletPrefab: {fileID: 3678528535242544938, guid: 085ec0ad1e9ec2043975e4aa4834ce09, type: 3}
