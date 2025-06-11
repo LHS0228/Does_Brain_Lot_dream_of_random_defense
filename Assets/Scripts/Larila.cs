@@ -1,17 +1,24 @@
 using UnityEngine;
 
-public class BBBTower : Tower
+public class Larila : Tower
 {
     public GameObject bulletPrefab;
     private float attackTimer = 0f;
+    private int attackCount = 0;
+
     private void Start()
     {
+        Init();
+    }
+    public override void Init()
+    {
         attackType = AttackType.MultiTarget;
-        towerType = TowerType.Bombardiro;
-        attackDamage = 250f;
-        attackRange = 3f;
-        attackSpeed = 1f;
-        attackCooltime = 1f;
+        towerType = TowerType.Larila;
+        attackDamage = 300f;
+        attackRange = 2.5f;
+        attackCooltime = 2;
+        towerStar = 1;
+        sellGold = 0;
     }
 
     private void FixedUpdate()
@@ -28,8 +35,6 @@ public class BBBTower : Tower
 
     public override void AttackMultiTarget()
     {
-        Debug.Log("BBB 공격");
-
         Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, attackRange);
 
         Transform target = null;
@@ -54,13 +59,38 @@ public class BBBTower : Tower
                 }
             }
         }
-        // 타겟 있으면 bullet 소환 그 다음 공격력 설정 및 타겟 설정 ㅇㅇ
-        if (target != null)
+
+        attackCount++;
+
+        if (attackCount == 3) // 슬로우 구현
         {
-            GameObject bulletObj = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
-            SplashBullet bullet = bulletObj.GetComponent<SplashBullet>();
-            bullet.bulletDamage = attackDamage;
-            bullet.SetTarget(target);
+            if (target != null)
+            {
+                GameObject bulletObj = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
+                SplashBullet bullet = bulletObj.GetComponent<SplashBullet>();
+                bullet.bulletDamage = attackDamage * 3;
+
+                // 슬로우 변수 조정
+                bullet.isSlowing = true;
+                bullet.slowRatio = 0.5f;
+                bullet.slowDuration = 3f;
+
+                bullet.SetTarget(target);
+
+                Debug.Log($"라릴라 3회 공격력 {bullet.bulletDamage}");
+                attackCount = 0;
+            }
+        }
+        else
+        {
+            // 타겟 있으면 bullet 소환 그 다음 공격력 설정 및 타겟 설정 ㅇㅇ
+            if (target != null)
+            {
+                GameObject bulletObj = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
+                SplashBullet bullet = bulletObj.GetComponent<SplashBullet>();
+                bullet.bulletDamage = attackDamage;
+                bullet.SetTarget(target);
+            }
         }
     }
 

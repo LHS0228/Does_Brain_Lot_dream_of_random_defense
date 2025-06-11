@@ -8,6 +8,10 @@ public class SplashBullet : MonoBehaviour
     public float bulletDamage;
     public float radius = 1.3f; // 데미지를 줄 범위 (반경)
 
+    public bool isSlowing = false;
+    public float slowRatio; // 0.5f 2초 ?
+    public float slowDuration;
+
     // 타겟과 정보 가져오기
     public void SetTarget(Transform enemy)
     {
@@ -44,8 +48,19 @@ public class SplashBullet : MonoBehaviour
 
     void HitTarget()
     {
+
+        
         // 적 정보 가져와서 데미지주고, 불렛 삭제시킴
         Monster enemy = target.GetComponent<Monster>();
+
+        if (enemy == null) return;
+
+        if (isSlowing == true) // 느려짐 디버프 
+        {
+            Slow slow = new Slow(MonsterDebuffT.Slow, slowDuration, enemy, slowRatio);
+            enemy.AddMonsterDebuff(slow);
+        }
+
         if (enemy != null)
         {
             float distance = Vector3.Distance(transform.position, target.transform.position);
@@ -62,9 +77,7 @@ public class SplashBullet : MonoBehaviour
                         hit.gameObject.GetComponent<Monster>().Damaged(bulletDamage);
                     }
                 }
-                //Instantiate(ExplosionParticle, transform.position, Quaternion.identity);
                 Destroy(gameObject);
-                //enemy.Damaged(bulletDamage);
             }
         }
     }

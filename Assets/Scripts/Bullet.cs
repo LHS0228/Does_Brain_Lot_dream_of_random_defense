@@ -54,7 +54,6 @@ public class Bullet : MonoBehaviour
         {
             Bleed bleed = new Bleed(MonsterDebuffT.Bleed, bleedDuration, enemy, totalBleedDamage);
             enemy.AddMonsterDebuff(bleed);
-            Debug.Log($"출혈 공격력 {totalBleedDamage}");
 
             Destroy(gameObject);
         }

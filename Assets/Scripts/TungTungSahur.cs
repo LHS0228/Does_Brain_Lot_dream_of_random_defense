@@ -15,7 +15,6 @@ public class TungTungSahur : Tower
         towerType = TowerType.TungTungSahur;
         attackDamage = 180f;
         attackRange = 1.5f;
-        attackSpeed = 1f;
         attackCooltime = 1f;
         towerStar = 1;
         sellGold = 0;
@@ -69,7 +68,7 @@ public class TungTungSahur : Tower
                 SplashBullet bullet = bulletObj.GetComponent<SplashBullet>();
                 bullet.bulletDamage = attackDamage * 5;
                 bullet.SetTarget(target);
-                Debug.Log($"공격력 {bullet.bulletDamage}");
+                Debug.Log($"퉁 5회 공격력 {bullet.bulletDamage}");
                 attackCount = 0;
             }
         }

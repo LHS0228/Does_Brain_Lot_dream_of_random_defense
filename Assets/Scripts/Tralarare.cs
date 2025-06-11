@@ -28,8 +28,7 @@ public class Tralarare : Tower
         attackType = AttackType.SingleTarget;
         towerType = TowerType.Tralarare;
         attackDamage = 200f;
-        attackRange = 5f;
-        attackSpeed = 1f;
+        attackRange = 1.5f;
         attackCooltime = 0.6666f;
         towerStar = 1;
         sellGold = 0;
@@ -67,7 +66,7 @@ public class Tralarare : Tower
 
         attackCount++;
 
-        if( attackCount == 3) // 4초동안 공격력 250% 출혈 아직 미구현
+        if( attackCount == 3)
         {
             if (target != null)
             {
@@ -79,11 +78,12 @@ public class Tralarare : Tower
                 //출혈 변수 조정
                 bullet.isBleeding = true;
                 bullet.totalBleedDamage = attackDamage * 2.5f;
-                bullet.bleedDuration = 2f;
+                bullet.bleedDuration = 4f;
 
                 bullet.SetTarget(target);
 
-                Debug.Log($"공격력 {bullet.totalBleedDamage}");
+                Debug.Log($"출혈 공격력 {bullet.totalBleedDamage}");
+
                 attackCount = 0;
             }
         }
