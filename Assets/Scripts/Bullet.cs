@@ -4,8 +4,13 @@ public class Bullet : MonoBehaviour
 {
     private Transform target;
     private Monster targetEnemy;
-    public float bulletSpeed = 5f;
+    public float bulletSpeed = 10f;
     public float bulletDamage;
+
+    public bool isBleeding = false;
+    public float totalBleedDamage;
+    public float bleedDuration;
+
 
     // 타겟과 정보 가져오기
     public void SetTarget(Transform enemy)
@@ -45,10 +50,21 @@ public class Bullet : MonoBehaviour
     {
         // 적 정보 가져와서 데미지주고, 불렛 삭제시킴
         Monster enemy = target.GetComponent<Monster>();
-        if (enemy != null)
+        if(isBleeding == true)
         {
-            enemy.Damaged(bulletDamage);
+            Bleed bleed = new Bleed(MonsterDebuffT.Bleed, bleedDuration, enemy, totalBleedDamage);
+            enemy.AddMonsterDebuff(bleed);
+
+            Destroy(gameObject);
         }
-        Destroy(gameObject);
+        else
+        {
+            if (enemy != null)
+            {
+                enemy.Damaged(bulletDamage);
+            }
+            Destroy(gameObject);
+        }
+        
     }
 }

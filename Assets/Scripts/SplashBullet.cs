@@ -4,9 +4,19 @@ public class SplashBullet : MonoBehaviour
 {
     private Transform target;
     private Monster targetEnemy;
-    public float bulletSpeed = 5f;
+    public float bulletSpeed = 10f;
     public float bulletDamage;
     public float radius = 1.3f; // 데미지를 줄 범위 (반경)
+
+    // 슬로우 변수
+    public bool isSlowing = false;
+    public float slowRatio; // 0.5f 2초 ?
+    public float slowDuration;
+
+    // 속박 변수
+    public bool isBinding = false;
+    public float bindDuration;
+
 
     // 타겟과 정보 가져오기
     public void SetTarget(Transform enemy)
@@ -44,15 +54,36 @@ public class SplashBullet : MonoBehaviour
 
     void HitTarget()
     {
+
+        
         // 적 정보 가져와서 데미지주고, 불렛 삭제시킴
         Monster enemy = target.GetComponent<Monster>();
+
+        if (enemy == null) return;
+
+        if (isSlowing == true) // 느려짐 디버프 
+        {
+            Slow slow = new Slow(MonsterDebuffT.Slow, slowDuration, enemy, slowRatio);
+            enemy.AddMonsterDebuff(slow);
+        }
+
+        if(isBinding == true) // 속박 디버프
+        {
+            if (Random.value < 0.25f)
+            {
+                Debug.Log("속박 발동");
+                Bind bind = new Bind(MonsterDebuffT.Bind, bindDuration, enemy);
+                enemy.AddMonsterDebuff(bind);
+            }
+        }
+
         if (enemy != null)
         {
             float distance = Vector3.Distance(transform.position, target.transform.position);
 
             if (distance < 1.5f)
             {
-                Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, 3.0f);
+                Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, 1.3f);
 
                 // 찾은 애들에게 전부 1뎀
                 foreach (Collider2D hit in hits)
@@ -62,10 +93,13 @@ public class SplashBullet : MonoBehaviour
                         hit.gameObject.GetComponent<Monster>().Damaged(bulletDamage);
                     }
                 }
-                //Instantiate(ExplosionParticle, transform.position, Quaternion.identity);
                 Destroy(gameObject);
-                //enemy.Damaged(bulletDamage);
             }
         }
+    }
+    public void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, 1.3f);
     }
 }

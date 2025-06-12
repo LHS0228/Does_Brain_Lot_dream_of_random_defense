@@ -12,7 +12,6 @@ public class Tower : MonoBehaviour
     public TowerType towerType;
     public float attackDamage;
     public float attackRange;
-    public float attackSpeed;
     public float attackCooltime;
     public AttackType attackType;
     public int towerStar = 0;
@@ -29,7 +28,6 @@ public class Tower : MonoBehaviour
         towerType = TowerType.Patapim;
         attackDamage = 180f;
         attackRange = 3f;
-        attackSpeed = 1f;
         attackCooltime = 1f;
         towerStar = 1;
         sellGold = 0;
@@ -92,11 +90,10 @@ public class Tower : MonoBehaviour
         curTile.OutPlace();
     }
 
-    public void StateSetting(float _attackDamage, float _attackRange, float _attackSpeed, float _attackCooltime, int _towerStar)
+    public void StateSetting(float _attackDamage, float _attackRange, float _attackCooltime, int _towerStar)
     {
         attackDamage = _attackDamage;
         attackRange = _attackRange;
-        attackSpeed = _attackSpeed;
         attackCooltime = _attackCooltime;
         towerStar = _towerStar;
     }
@@ -125,7 +122,7 @@ public class Tower : MonoBehaviour
             }
         }
 
-        switch (towerStar)
+        /*switch (towerStar)
         {
             case 1:
                 gameObject.GetComponent<SpriteRenderer>().color = new Color(255, 0, 0);
@@ -148,6 +145,6 @@ public class Tower : MonoBehaviour
             default:
                 Debug.Log("���� �ڵ� ���׳�");
                 break;
-        }
+        }*/
     }
 }
