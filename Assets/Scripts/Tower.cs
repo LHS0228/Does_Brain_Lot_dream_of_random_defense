@@ -30,7 +30,7 @@ public class Tower : MonoBehaviour
         attackRange = 3f;
         attackCooltime = 1f;
         towerStar = 1;
-        sellGold = 0;
+        sellGold = 30;
 
         //���⿡ �ʱ�ȭ�ϴ� �ڵ� �־���
     }

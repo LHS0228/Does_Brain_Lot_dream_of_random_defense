@@ -4,7 +4,7 @@ public class TowerCreator : MonoBehaviour
 {
     [SerializeField]
     GameObject[] units = new GameObject[5];
-    private int spawnGold = 90; //테스트가 원활하도록 일단 0
+    private int spawnGold = 10; //테스트가 원활하도록 일단 0
 
     public void CreateRandomUnit()
     {
@@ -22,6 +22,7 @@ public class TowerCreator : MonoBehaviour
 
 
             tower.Init(spawnTile);
+            spawnGold += 10;
         }
     }
 }
