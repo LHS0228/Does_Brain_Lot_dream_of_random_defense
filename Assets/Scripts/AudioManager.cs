@@ -18,6 +18,7 @@ public class AudioManager : MonoBehaviour
             LoadSoundGroups();
             InitializeAudioSourcePool();
             InitializeBGMSource();
+            PlayBGM("Theme(석양의 무법자)");
         }
         else
         {
@@ -69,7 +70,9 @@ public class AudioManager : MonoBehaviour
             {
                 AudioSource audioSource = GetAudioSource();
                 audioSource.clip = clip;
-                audioSource.Play();
+                audioSource.volume *= 0.3f;
+                audioSource.PlayOneShot(clip);
+/*                audioSource.Play();*/
                 StartCoroutine(ReturnAfterPlaying(audioSource, clip.length));
             }
         }
@@ -82,7 +85,7 @@ public class AudioManager : MonoBehaviour
             AudioClip clip = clips.Find(c => c.name == clipName);
             if (clip != null && bgmSource.clip != clip)
             {
-                /*                bgmSource.volume *= 0.5f;*/
+                bgmSource.volume *= 0.2f;
                 bgmSource.clip = clip;
                 bgmSource.Play();
             }

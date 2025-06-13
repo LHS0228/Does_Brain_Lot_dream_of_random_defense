@@ -7,6 +7,7 @@ public class Patapim : Tower
     private int attackCount = 0;
     private void Start()
     {
+        AudioManager.instance.PlaySound("Character", "브르르브르르파타핌");
         Init();
     }
     public override void Init()

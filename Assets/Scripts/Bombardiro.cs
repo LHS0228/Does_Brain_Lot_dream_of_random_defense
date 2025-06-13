@@ -7,6 +7,7 @@ public class Bombardiro : Tower
     private int attackCount = 0;
     private void Start()
     {
+        AudioManager.instance.PlaySound("Character", "º½¹Ù¸£µô·ÎÅ©·ÎÄÚµô·Î");
         Init();
     }
     public override void Init()
