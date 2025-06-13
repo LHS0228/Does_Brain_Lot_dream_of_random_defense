@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.Networking;
 using System.Collections;
+using TMPro;
 
 [System.Serializable]
 public class RankingEntry
@@ -23,6 +24,8 @@ public class ScoreManager : MonoBehaviour
 
     private int _score;
     public int Score => _score;
+
+    public TMP_Text rankingText; // 유니티 인스펙터에서 연결
 
     private void Awake()
     {
