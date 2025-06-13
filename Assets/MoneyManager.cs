@@ -7,8 +7,7 @@ public class MoneyManager : MonoBehaviour
     public static MoneyManager Instance => instance;
 
     int gold;
-
-    public int gem;
+    int gem;
 
     public int Gold => gold; 
 

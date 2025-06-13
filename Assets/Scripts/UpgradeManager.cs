@@ -12,6 +12,11 @@ public class UpgradeManager : MonoBehaviour
     [SerializeField] private Button button_Upgrade_Larila;
     [SerializeField] private Button button_Upgrade_Bombardiro;
     [SerializeField] private Button button_Upgrade_Patapim;
+    [SerializeField] private TextMeshProUGUI text_level_TungTungSahur;
+    [SerializeField] private TextMeshProUGUI text_level_Tralarare;
+    [SerializeField] private TextMeshProUGUI text_level_Larila;
+    [SerializeField] private TextMeshProUGUI text_level_Bombardiro;
+    [SerializeField] private TextMeshProUGUI text_level_Patapim;
 
     public int up_Level_TungTungSahur = 0;
     public int up_Level_Tralarare = 0;
@@ -29,17 +34,23 @@ public class UpgradeManager : MonoBehaviour
 
     private void Awake()
     {
-        up_Level_TungTungSahur = 1;
-        up_Level_Tralarare = 1;
-        up_Level_Larila = 1;
-        up_Level_Bombardiro = 1;
-        up_Level_Patapim = 1;
+        up_Level_TungTungSahur = 0;
+        up_Level_Tralarare = 0;
+        up_Level_Larila = 0;
+        up_Level_Bombardiro = 0;
+        up_Level_Patapim = 0;
 
         up_Money_TungTungSahur = 1;
         up_Money_Tralarare = 1;
         up_Money_Larila = 1;
         up_Money_Bombardiro = 1;
         up_Money_Patapim = 1;
+        text_level_TungTungSahur.text = $"Lv.{up_Level_TungTungSahur}";
+        text_level_Tralarare.text = $"Lv.{up_Level_Tralarare}";
+        text_level_Larila.text = $"Lv.{up_Level_Larila}";
+        text_level_Bombardiro.text = $"Lv.{up_Level_Bombardiro}";
+        text_level_Patapim.text = $"Lv.{up_Level_Patapim}";
+
         Instance = this;
     }
 
@@ -76,7 +87,7 @@ public class UpgradeManager : MonoBehaviour
                 MoneyManager.Instance.UpdateGem(-up_Money_TungTungSahur);
                 //다음 업그레이드 계산식 (아직 아무것도 없음)
                 up_Money_TungTungSahur += 1;
-
+                text_level_TungTungSahur.text = $"Lv.{up_Level_TungTungSahur}";
                 Debug.Log("퉁사 업글");
                 break;
             case 1:
@@ -85,7 +96,7 @@ public class UpgradeManager : MonoBehaviour
 
                 //다음 업그레이드 계산식 (아직 아무것도 없음)
                 up_Money_Tralarare += 1;
-
+                text_level_Tralarare.text = $"Lv.{up_Level_Tralarare}";
                 Debug.Log("트랄 업글");
                 break;
             case 2:
@@ -94,7 +105,7 @@ public class UpgradeManager : MonoBehaviour
 
                 //다음 업그레이드 계산식 (아직 아무것도 없음)
                 up_Money_Larila += 1;
-
+                text_level_Larila.text = $"Lv.{up_Level_Larila}";
                 Debug.Log("라릴라 업글");
                 break;
             case 3:
@@ -103,7 +114,7 @@ public class UpgradeManager : MonoBehaviour
 
                 //다음 업그레이드 계산식 (아직 아무것도 없음)
                 up_Money_Bombardiro += 1;
-
+                text_level_Bombardiro.text = $"Lv.{up_Level_Bombardiro}";
                 Debug.Log("봄바르 업글");
                 break;
             case 4:
@@ -112,7 +123,7 @@ public class UpgradeManager : MonoBehaviour
 
                 //다음 업그레이드 계산식 (아직 아무것도 없음)
                 up_Money_Patapim += 1;
-
+                text_level_Patapim.text = $"Lv.{up_Level_Patapim}";
                 Debug.Log("파타빔 업글");
                 break;
         }

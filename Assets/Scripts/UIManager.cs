@@ -11,6 +11,7 @@ public class UIManager : MonoBehaviour
     public TextMeshProUGUI MonsterCount;
     public TextMeshProUGUI GoldUI;
     public TextMeshProUGUI GemUI;
+    public TextMeshProUGUI SpawnGoldUI;
     private void Awake()
     {
         if (instance == null)
@@ -35,16 +36,21 @@ public class UIManager : MonoBehaviour
 
     private void WaveTimerUpdate()
     {
-        waveTimer.text = $"다음 웨이브 까지{WaveManager.Instance.RemainWaveTime :F0}";
+        waveTimer.text = $"Next Wave.. {WaveManager.Instance.RemainWaveTime :F0}";
     }
 
     public void GoldUIUpdate()
     {
-        GoldUI.text = $"{MoneyManager.Instance.Gold}";
+        GoldUI.text = $"{MoneyManager.Instance.Gold} Gold";
+    }
+
+    public void SpawnGoldUpdate(int amount)
+    {
+        SpawnGoldUI.text = $"{amount} Gold";
     }
 
     public void GemUIUpdate()
     {
-        GemUI.text = $"{MoneyManager.Instance.Gem}";
+        GemUI.text = $"{MoneyManager.Instance.Gem} Gem";
     }
 }

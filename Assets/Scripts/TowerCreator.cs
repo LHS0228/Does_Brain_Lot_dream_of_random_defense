@@ -6,6 +6,11 @@ public class TowerCreator : MonoBehaviour
     GameObject[] units = new GameObject[5];
     private int spawnGold = 10; //테스트가 원활하도록 일단 0
 
+    private void Awake()
+    {
+        UIManager.Instance.SpawnGoldUpdate(spawnGold);
+    }
+
     public void CreateRandomUnit()
     {
         if (MoneyManager.Instance.Gold >= spawnGold)
@@ -23,6 +28,7 @@ public class TowerCreator : MonoBehaviour
 
             tower.Init(spawnTile);
             spawnGold += 10;
+            UIManager.Instance.SpawnGoldUpdate(spawnGold);
         }
     }
 }
