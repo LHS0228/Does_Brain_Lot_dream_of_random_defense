@@ -102,49 +102,59 @@ public class Tower : MonoBehaviour
     {
         if (attackDamage <= 0)
         {
+            float baseDamage = 0f;
+            int level = 0;
+
             switch (towerType)
             {
                 case TowerType.TungTungSahur:
-                    attackDamage = 1 * UpgradeManager.Instance.up_Level_TungTungSahur;
+                    level = UpgradeManager.Instance.up_Level_TungTungSahur;
+                    baseDamage = 1f; // 타워의 기본 공격력
                     break;
                 case TowerType.Tralarare:
-                    attackDamage = 1 * UpgradeManager.Instance.up_Level_Tralarare;
+                    level = UpgradeManager.Instance.up_Level_Tralarare;
+                    baseDamage = 1.2f;
                     break;
                 case TowerType.Larila:
-                    attackDamage = 1 * UpgradeManager.Instance.up_Level_Larila;
+                    level = UpgradeManager.Instance.up_Level_Larila;
+                    baseDamage = 1.5f;
                     break;
                 case TowerType.Bombardiro:
-                    attackDamage = 1 * UpgradeManager.Instance.up_Level_Bombardiro;
+                    level = UpgradeManager.Instance.up_Level_Bombardiro;
+                    baseDamage = 2.0f;
                     break;
                 case TowerType.Patapim:
-                    attackDamage = 1 * UpgradeManager.Instance.up_Level_Patapim;
+                    level = UpgradeManager.Instance.up_Level_Patapim;
+                    baseDamage = 8.0f;
                     break;
             }
+
+            attackDamage = 200f * Mathf.Pow(level, 0.7f) + baseDamage;
         }
 
-        /*switch (towerStar)
+        switch (towerStar)
         {
             case 1:
-                gameObject.GetComponent<SpriteRenderer>().color = new Color(255, 0, 0);
+                gameObject.GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, 1f); // 흰색
                 break;
             case 2:
-                gameObject.GetComponent<SpriteRenderer>().color = new Color(255, 94, 0);
+                gameObject.GetComponent<SpriteRenderer>().color = new Color(1f, 94f / 255f, 0f, 1f); // 주황
                 break;
             case 3:
-                gameObject.GetComponent<SpriteRenderer>().color = new Color(255, 255, 0);
+                gameObject.GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 0f, 1f); // 노랑
                 break;
             case 4:
-                gameObject.GetComponent<SpriteRenderer>().color = new Color(0, 255, 0);
+                gameObject.GetComponent<SpriteRenderer>().color = new Color(0f, 1f, 0f, 1f); // 초록
                 break;
             case 5:
-                gameObject.GetComponent<SpriteRenderer>().color = new Color(0, 0, 255);
+                gameObject.GetComponent<SpriteRenderer>().color = new Color(0f, 0f, 1f, 1f); // 파랑
                 break;
             case 6:
-                gameObject.GetComponent<SpriteRenderer>().color = new Color(255, 94, 255);
+                gameObject.GetComponent<SpriteRenderer>().color = new Color(1f, 94f / 255f, 1f, 1f); // 분홍
                 break;
             default:
-                Debug.Log("���� �ڵ� ���׳�");
+                Debug.Log("별 등급 잘못됨");
                 break;
-        }*/
+        }
     }
 }
