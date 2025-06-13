@@ -100,11 +100,11 @@ public class Tower : MonoBehaviour
 
     public void AttackReloding()
     {
-        if (attackDamage <= 0)
-        {
-            float baseDamage = 0f;
-            int level = 0;
+        float baseDamage = 0f;
+        int level = 0;
 
+        if(attackDamage > 0f)
+        {
             switch (towerType)
             {
                 case TowerType.TungTungSahur:

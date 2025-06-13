@@ -34,11 +34,11 @@ public class UpgradeManager : MonoBehaviour
 
     private void Awake()
     {
-        up_Level_TungTungSahur = 0;
-        up_Level_Tralarare = 0;
-        up_Level_Larila = 0;
-        up_Level_Bombardiro = 0;
-        up_Level_Patapim = 0;
+        up_Level_TungTungSahur = 1;
+        up_Level_Tralarare = 1;
+        up_Level_Larila = 1;
+        up_Level_Bombardiro = 1;
+        up_Level_Patapim = 1;
 
         up_Money_TungTungSahur = 1;
         up_Money_Tralarare = 1;
@@ -51,7 +51,14 @@ public class UpgradeManager : MonoBehaviour
         text_level_Bombardiro.text = $"Lv.{up_Level_Bombardiro}";
         text_level_Patapim.text = $"Lv.{up_Level_Patapim}";
 
-        Instance = this;
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 
     public void Update()
