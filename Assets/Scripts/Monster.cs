@@ -12,7 +12,7 @@ public class Monster : MonoBehaviour
     float MaxHp = 0;
     int earnGold = 10;
     float gemRatio = 0.01f;
-    bool isBoss = false;
+    bool isBoss = false; 
     float Hp { get { return hp; } set { hp = Mathf.Max(0, value); } }
     
     List<MonsterDebuff> debuffs = new List<MonsterDebuff>();

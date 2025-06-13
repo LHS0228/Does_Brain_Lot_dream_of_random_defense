@@ -43,6 +43,7 @@ public class MonsterManager : MonoBehaviour
         Debug.Log($"몬스터 체력 {hp}");
 
     }
+
     public void SpawnBoss()
     {
         GameObject spawnedM = Instantiate(monster_boss, spawnPos.position, spawnPos.rotation);
