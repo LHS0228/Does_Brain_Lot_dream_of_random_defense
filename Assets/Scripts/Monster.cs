@@ -10,6 +10,8 @@ public class Monster : MonoBehaviour
     MovementTarget movementTarget;
     float hp = 0;
     float MaxHp = 0;
+    int earnGold = 10;
+    float gemRatio = 0.01f;
     float Hp { get { return hp; } set { hp = Mathf.Max(0, value); } }
     
     List<MonsterDebuff> debuffs = new List<MonsterDebuff>();
@@ -69,6 +71,11 @@ public class Monster : MonoBehaviour
 
     public void Dead()
     {
+        MoneyManager.Instance.UpdateGold(earnGold);
+        if(Random.value <= gemRatio)
+        {
+            MoneyManager.Instance.UpdateGem(1);
+        }
         MonsterManager.Instance.RemoveMonster(this);
     }
 
