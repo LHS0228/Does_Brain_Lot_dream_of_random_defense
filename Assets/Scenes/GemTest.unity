@@ -1335,7 +1335,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 130a23d0672b4ab4c8f3eda961d6ad99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dustEffect: {fileID: 7171849144937372959, guid: 574005672dd9b9a42ae11f30a71e9dde, type: 3}
+  dustEffect: {fileID: 1967835574231978638, guid: 3e196c9e632c76841a71cb6e2dc6d010, type: 3}
 --- !u!4 &498442790
 Transform:
   m_ObjectHideFlags: 0
@@ -4577,7 +4577,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   monster_normal: {fileID: 2598684453456234745, guid: 2ac536a81b817484c857fd3ea494285c, type: 3}
-  monster_boss: {fileID: 2598684453456234745, guid: 2ac536a81b817484c857fd3ea494285c, type: 3}
+  monster_boss: {fileID: 2598684453456234745, guid: 539b1c8360384f046b250babc7f0dd06, type: 3}
   waveManager: {fileID: 1984458092}
   spawnPos: {fileID: 995269303}
 --- !u!4 &1523442936

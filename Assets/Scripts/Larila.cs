@@ -8,6 +8,7 @@ public class Larila : Tower
 
     private void Start()
     {
+        AudioManager.instance.PlaySound("Character", "府副府扼副扼");
         Init();
     }
     public override void Init()

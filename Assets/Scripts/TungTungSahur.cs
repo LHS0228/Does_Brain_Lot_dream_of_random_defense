@@ -7,6 +7,7 @@ public class TungTungSahur : Tower
     private int attackCount = 0;
     private void Start()
     {
+        AudioManager.instance.PlaySound("Character", "ÅüÅüÅü»çÈÄ¸£");
         Init();
     }
     public override void Init()

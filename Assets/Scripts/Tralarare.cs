@@ -8,6 +8,7 @@ public class Tralarare : Tower
 
     private void Start()
     {
+        AudioManager.instance.PlaySound("Character", "Æ®¶ö¶ö·¹·ÎÆ®¶ö¶ö¶ó");
         Init();
     }
 

@@ -12,13 +12,15 @@ public class Monster : MonoBehaviour
     float MaxHp = 0;
     int earnGold = 10;
     float gemRatio = 0.01f;
+    bool isBoss = false; 
     float Hp { get { return hp; } set { hp = Mathf.Max(0, value); } }
     
     List<MonsterDebuff> debuffs = new List<MonsterDebuff>();
     bool isBinding = false;
     float slowRatio = 0;
-    public virtual void Init(float speed, float MaxHp, MovementTarget movementTarget)
+    public virtual void Init(float speed, float MaxHp, MovementTarget movementTarget, bool isboss)
     {
+        this.isBoss = isboss;
         this.speed = speed;
         this.hp = MaxHp;
         this.movementTarget = movementTarget;
@@ -75,6 +77,11 @@ public class Monster : MonoBehaviour
         if(Random.value <= gemRatio)
         {
             MoneyManager.Instance.UpdateGem(1);
+        }
+
+        if(isBoss)
+        {
+            MoneyManager.Instance.UpdateGem(3);
         }
         MonsterManager.Instance.RemoveMonster(this);
     }

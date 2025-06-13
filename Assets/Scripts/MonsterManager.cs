@@ -36,15 +36,21 @@ public class MonsterManager : MonoBehaviour
         GameObject spawnedM = Instantiate(monster_normal, spawnPos.position, spawnPos.rotation);
         Monster m = spawnedM.GetComponent<Monster>();
         UpdateMonsterHp();
-        m.Init(3, hp, spawnPos.GetComponent<MovementTarget>());
+        m.Init(3, hp, spawnPos.GetComponent<MovementTarget>(),false);
         monsters.Add(m);
         UIManager.Instance.MonsterCounting(currentMonsterCnt);
 
         Debug.Log($"몬스터 체력 {hp}");
 
     }
+
     public void SpawnBoss()
     {
+        GameObject spawnedM = Instantiate(monster_boss, spawnPos.position, spawnPos.rotation);
+        Monster m = spawnedM.GetComponent<Monster>();
+        UpdateMonsterHp();
+        m.Init(3, hp*10, spawnPos.GetComponent<MovementTarget>(),true);
+        monsters.Add(m);
         UIManager.Instance.MonsterCounting(currentMonsterCnt);
     }
 

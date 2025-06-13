@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 7733514499226569317}
   - component: {fileID: 890508301135315935}
-  - component: {fileID: 1308499349463097787}
   - component: {fileID: -1703823077921744539}
+  - component: {fileID: 5949892124518009593}
   m_Layer: 6
   m_Name: Patapim
   m_TagString: Untagged
@@ -89,8 +89,28 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!60 &1308499349463097787
-PolygonCollider2D:
+--- !u!114 &-1703823077921744539
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 639916068453680758}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebcbf2f7501cf2b46b1dc299b2430947, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  towerType: 4
+  attackDamage: 0
+  attackRange: 0
+  attackCooltime: 0
+  attackType: 1
+  towerStar: 0
+  sellGold: 0
+  bulletPrefab: {fileID: 3678528535242544938, guid: 9af43071e4463db42a19ead78caa5123, type: 3}
+--- !u!61 &5949892124518009593
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -123,39 +143,15 @@ PolygonCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: 1.2349999}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.50254434, y: 0.19426395}
+    pivot: {x: 0.5, y: 0.25}
     oldSize: {x: 4.24, y: 4.94}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: 0, y: 0.5773587}
-      - {x: -0.5, y: -0.28866667}
-      - {x: 0.5, y: -0.28866667}
-  m_UseDelaunayMesh: 0
---- !u!114 &-1703823077921744539
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 639916068453680758}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ebcbf2f7501cf2b46b1dc299b2430947, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  towerType: 4
-  attackDamage: 0
-  attackRange: 0
-  attackCooltime: 0
-  attackType: 1
-  towerStar: 0
-  sellGold: 0
-  bulletPrefab: {fileID: 3678528535242544938, guid: 9af43071e4463db42a19ead78caa5123, type: 3}
+  m_Size: {x: 3, y: 3}
+  m_EdgeRadius: 0
