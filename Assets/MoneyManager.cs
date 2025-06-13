@@ -8,7 +8,7 @@ public class MoneyManager : MonoBehaviour
 
     int gold;
 
-    int gem;
+    public int gem;
 
     public int Gold => gold; 
 
@@ -20,7 +20,7 @@ public class MoneyManager : MonoBehaviour
             instance = this;
         else Destroy(gameObject);
 
-        gold = 500;
+        gold = 100;
         gem = 0;
     }
 

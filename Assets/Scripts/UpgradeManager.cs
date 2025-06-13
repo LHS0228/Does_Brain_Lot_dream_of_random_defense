@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class UpgradeManager : MonoBehaviour
 {
@@ -12,25 +13,33 @@ public class UpgradeManager : MonoBehaviour
     [SerializeField] private Button button_Upgrade_Bombardiro;
     [SerializeField] private Button button_Upgrade_Patapim;
 
-    public int up_Level_TungTungSahur;
-    public int up_Level_Tralarare;
-    public int up_Level_Larila;
-    public int up_Level_Bombardiro;
-    public int up_Level_Patapim;
+    public int up_Level_TungTungSahur = 0;
+    public int up_Level_Tralarare = 0;
+    public int up_Level_Larila = 0;
+    public int up_Level_Bombardiro = 0;
+    public int up_Level_Patapim = 0;
 
-    public int up_Money_TungTungSahur;
-    public int up_Money_Tralarare;
-    public int up_Money_Larila;
-    public int up_Money_Bombardiro;
-    public int up_Money_Patapim;
+    public int up_Money_TungTungSahur = 0;
+    public int up_Money_Tralarare = 0;
+    public int up_Money_Larila = 0;
+    public int up_Money_Bombardiro = 0;
+    public int up_Money_Patapim = 0;
 
-    
-    /*이거 돈 관련 변수 시스템 생기면 없애고 다른걸로 대체*/public int money;
-    //강화 시 들어가는 돈 계산식
     //강화 시 들어가는 스텟 계산식
 
     private void Awake()
     {
+        up_Level_TungTungSahur = 1;
+        up_Level_Tralarare = 1;
+        up_Level_Larila = 1;
+        up_Level_Bombardiro = 1;
+        up_Level_Patapim = 1;
+
+        up_Money_TungTungSahur = 1;
+        up_Money_Tralarare = 1;
+        up_Money_Larila = 1;
+        up_Money_Bombardiro = 1;
+        up_Money_Patapim = 1;
         Instance = this;
     }
 
@@ -41,19 +50,19 @@ public class UpgradeManager : MonoBehaviour
 
     private void UpgradeButtonSystem()
     {
-        if (money >= up_Money_TungTungSahur) button_Upgrade_TungTungSahur.interactable = true;
+        if (MoneyManager.Instance.Gem >= up_Money_TungTungSahur) button_Upgrade_TungTungSahur.interactable = true;
         else button_Upgrade_TungTungSahur.interactable = false;
 
-        if (money >= up_Money_Tralarare) button_Upgrade_Tralarare.interactable = true;
+        if (MoneyManager.Instance.Gem >= up_Money_Tralarare) button_Upgrade_Tralarare.interactable = true;
         else button_Upgrade_Tralarare.interactable = false;
 
-        if (money >= up_Money_Larila) button_Upgrade_Larila.interactable = true;
+        if (MoneyManager.Instance.Gem >= up_Money_Larila) button_Upgrade_Larila.interactable = true;
         else button_Upgrade_Larila.interactable = false;
 
-        if(money >= up_Money_Bombardiro) button_Upgrade_Bombardiro.interactable = true;
+        if(MoneyManager.Instance.Gem >= up_Money_Bombardiro) button_Upgrade_Bombardiro.interactable = true;
         else button_Upgrade_Bombardiro.interactable = false;
 
-        if(money >= up_Money_Patapim) button_Upgrade_Patapim.interactable = true;
+        if(MoneyManager.Instance.Gem >= up_Money_Patapim) button_Upgrade_Patapim.interactable = true;
         else button_Upgrade_Patapim.interactable = false;
     }
 
@@ -64,46 +73,45 @@ public class UpgradeManager : MonoBehaviour
         {
             case 0:
                 up_Level_TungTungSahur++;
-                money -= up_Money_TungTungSahur;
-
+                MoneyManager.Instance.UpdateGem(-up_Money_TungTungSahur);
                 //다음 업그레이드 계산식 (아직 아무것도 없음)
-                up_Money_TungTungSahur += up_Level_TungTungSahur;
+                up_Money_TungTungSahur += 1;
 
                 Debug.Log("퉁사 업글");
                 break;
             case 1:
                 up_Level_Tralarare++;
-                money -= up_Money_Tralarare;
+                MoneyManager.Instance.UpdateGem(-up_Money_Tralarare);
 
                 //다음 업그레이드 계산식 (아직 아무것도 없음)
-                up_Money_Tralarare += up_Level_Tralarare;
+                up_Money_Tralarare += 1;
 
                 Debug.Log("트랄 업글");
                 break;
             case 2:
                 up_Level_Larila++;
-                money -= up_Money_Larila;
+                MoneyManager.Instance.UpdateGem(-up_Money_Larila);
 
                 //다음 업그레이드 계산식 (아직 아무것도 없음)
-                up_Money_Larila += up_Level_Larila;
+                up_Money_Larila += 1;
 
                 Debug.Log("라릴라 업글");
                 break;
             case 3:
                 up_Level_Bombardiro++;
-                money -= up_Money_Bombardiro;
+                MoneyManager.Instance.UpdateGem(-up_Money_Bombardiro);
 
                 //다음 업그레이드 계산식 (아직 아무것도 없음)
-                up_Money_Bombardiro += up_Level_Bombardiro;
+                up_Money_Bombardiro += 1;
 
                 Debug.Log("봄바르 업글");
                 break;
             case 4:
                 up_Level_Patapim++;
-                money -= up_Money_Patapim;
+                MoneyManager.Instance.UpdateGem(-up_Money_Patapim);
 
                 //다음 업그레이드 계산식 (아직 아무것도 없음)
-                up_Money_Patapim += up_Level_Patapim;
+                up_Money_Patapim += 1;
 
                 Debug.Log("파타빔 업글");
                 break;
