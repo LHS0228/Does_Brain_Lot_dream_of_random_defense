@@ -52,9 +52,12 @@ public class Tower : MonoBehaviour
         
     }
 
-    public void StarUpgrade()
+    public int StarUpgrade()
     {
         towerStar++;
+        AttackReloding();
+
+        return towerStar;
     }
 
     public virtual void Init(Tile tile)
@@ -95,6 +98,8 @@ public class Tower : MonoBehaviour
         attackRange = _attackRange;
         attackCooltime = _attackCooltime;
         towerStar = _towerStar;
+
+        AttackReloding();
     }
 
     public void AttackReloding()
