@@ -41,6 +41,7 @@ public class WaveManager : MonoBehaviour
 
     void Update()
     {
+        if (MonsterManager.Instance.isGameOver) return;
         if (isWaveOngoing == false) return;
 
         remainWaveTime -= Time.deltaTime;

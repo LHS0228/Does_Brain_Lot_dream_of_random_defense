@@ -92,7 +92,6 @@ public class UpgradeManager : MonoBehaviour
             case 0:
                 up_Level_TungTungSahur++;
                 MoneyManager.Instance.UpdateGem(-up_Money_TungTungSahur);
-                //다음 업그레이드 계산식 (아직 아무것도 없음)
                 up_Money_TungTungSahur += 1;
                 text_level_TungTungSahur.text = $"Lv.{up_Level_TungTungSahur}";
                 Debug.Log("퉁사 업글");
@@ -101,7 +100,6 @@ public class UpgradeManager : MonoBehaviour
                 up_Level_Tralarare++;
                 MoneyManager.Instance.UpdateGem(-up_Money_Tralarare);
 
-                //다음 업그레이드 계산식 (아직 아무것도 없음)
                 up_Money_Tralarare += 1;
                 text_level_Tralarare.text = $"Lv.{up_Level_Tralarare}";
                 Debug.Log("트랄 업글");
@@ -110,7 +108,6 @@ public class UpgradeManager : MonoBehaviour
                 up_Level_Larila++;
                 MoneyManager.Instance.UpdateGem(-up_Money_Larila);
 
-                //다음 업그레이드 계산식 (아직 아무것도 없음)
                 up_Money_Larila += 1;
                 text_level_Larila.text = $"Lv.{up_Level_Larila}";
                 Debug.Log("라릴라 업글");
@@ -119,7 +116,6 @@ public class UpgradeManager : MonoBehaviour
                 up_Level_Bombardiro++;
                 MoneyManager.Instance.UpdateGem(-up_Money_Bombardiro);
 
-                //다음 업그레이드 계산식 (아직 아무것도 없음)
                 up_Money_Bombardiro += 1;
                 text_level_Bombardiro.text = $"Lv.{up_Level_Bombardiro}";
                 Debug.Log("봄바르 업글");
@@ -128,7 +124,6 @@ public class UpgradeManager : MonoBehaviour
                 up_Level_Patapim++;
                 MoneyManager.Instance.UpdateGem(-up_Money_Patapim);
 
-                //다음 업그레이드 계산식 (아직 아무것도 없음)
                 up_Money_Patapim += 1;
                 text_level_Patapim.text = $"Lv.{up_Level_Patapim}";
                 Debug.Log("파타빔 업글");

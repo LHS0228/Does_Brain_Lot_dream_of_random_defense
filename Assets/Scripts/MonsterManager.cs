@@ -23,6 +23,9 @@ public class MonsterManager : MonoBehaviour
 
     [SerializeField]
     Transform spawnPos;
+
+    public bool isGameOver;
+
     private void Awake()
     {
         if (instance == null)
@@ -31,8 +34,20 @@ public class MonsterManager : MonoBehaviour
 
     }
 
+    public void GameOver()
+    {
+        if(currentMonsterCnt > 20 && !isGameOver)
+        {
+            Debug.Log("게임 오버");
+
+            isGameOver = true;
+        }
+    }
+
     public void SpawnMonster()
     {
+        if (isGameOver) return;
+
         GameObject spawnedM = Instantiate(monster_normal, spawnPos.position, spawnPos.rotation);
         Monster m = spawnedM.GetComponent<Monster>();
         UpdateMonsterHp();
@@ -42,16 +57,21 @@ public class MonsterManager : MonoBehaviour
 
         Debug.Log($"몬스터 체력 {hp}");
 
+        GameOver();
     }
 
     public void SpawnBoss()
     {
+        if (isGameOver) return;
+
         GameObject spawnedM = Instantiate(monster_boss, spawnPos.position, spawnPos.rotation);
         Monster m = spawnedM.GetComponent<Monster>();
         UpdateMonsterHp();
         m.Init(3, hp*10, spawnPos.GetComponent<MovementTarget>(),true);
         monsters.Add(m);
         UIManager.Instance.MonsterCounting(currentMonsterCnt);
+
+        GameOver();
     }
 
     // 몬스터가 피해 받아서 사라질 때
