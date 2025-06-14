@@ -10,7 +10,8 @@ public class Tower : MonoBehaviour
     private Tile curTile = null;
 
     public TowerType towerType;
-    public float attackDamage;
+    public float baseAttackDamage; //초기뎀
+    public float attackDamage; //최종뎀
     public float attackRange;
     public float attackCooltime;
     public AttackType attackType;
@@ -26,13 +27,11 @@ public class Tower : MonoBehaviour
     {
         attackType = AttackType.SingleTarget;
         towerType = TowerType.Patapim;
-        attackDamage = 180f;
+        baseAttackDamage = 180f;
         attackRange = 3f;
         attackCooltime = 1f;
         towerStar = 1;
         sellGold = 30;
-
-        //���⿡ �ʱ�ȭ�ϴ� �ڵ� �־���
     }
 
     public virtual void AttackSingleTarget()
@@ -90,9 +89,9 @@ public class Tower : MonoBehaviour
         curTile.OutPlace();
     }
 
-    public void StateSetting(float _attackDamage, float _attackRange, float _attackCooltime, int _towerStar)
+    public void StateSetting(float _baseAttackDamage, float _attackRange, float _attackCooltime, int _towerStar)
     {
-        attackDamage = _attackDamage;
+        baseAttackDamage = _baseAttackDamage;
         attackRange = _attackRange;
         attackCooltime = _attackCooltime;
         towerStar = _towerStar;
@@ -100,36 +99,30 @@ public class Tower : MonoBehaviour
 
     public void AttackReloding()
     {
-        float baseDamage = 0f;
         int level = 0;
 
-        if(attackDamage > 0f)
+        if(baseAttackDamage > 0f)
         {
             switch (towerType)
             {
                 case TowerType.TungTungSahur:
                     level = UpgradeManager.Instance.up_Level_TungTungSahur;
-                    baseDamage = 1f; // 타워의 기본 공격력
                     break;
                 case TowerType.Tralarare:
                     level = UpgradeManager.Instance.up_Level_Tralarare;
-                    baseDamage = 1.2f;
                     break;
                 case TowerType.Larila:
                     level = UpgradeManager.Instance.up_Level_Larila;
-                    baseDamage = 1.5f;
                     break;
                 case TowerType.Bombardiro:
                     level = UpgradeManager.Instance.up_Level_Bombardiro;
-                    baseDamage = 2.0f;
                     break;
                 case TowerType.Patapim:
                     level = UpgradeManager.Instance.up_Level_Patapim;
-                    baseDamage = 8.0f;
                     break;
             }
 
-            attackDamage = 200f * Mathf.Pow(level, 0.7f) + baseDamage;
+            attackDamage = (200f * Mathf.Pow(level, 0.7f) + baseAttackDamage) * towerStar;
         }
 
         switch (towerStar)

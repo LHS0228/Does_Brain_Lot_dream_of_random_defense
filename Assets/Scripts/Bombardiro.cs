@@ -14,7 +14,7 @@ public class Bombardiro : Tower
     {
         attackType = AttackType.MultiTarget;
         towerType = TowerType.Bombardiro;
-        attackDamage = 250f;
+        baseAttackDamage = 250f;
         attackRange = 3.5f;
         attackCooltime = 1;
         towerStar = 1;

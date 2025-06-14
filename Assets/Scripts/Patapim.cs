@@ -14,7 +14,7 @@ public class Patapim : Tower
     {
         attackType = AttackType.MultiTarget;
         towerType = TowerType.Patapim;
-        attackDamage = 50f;
+        baseAttackDamage = 50f;
         attackRange = 3.5f;
         attackCooltime = 0.6666f;
         towerStar = 1;

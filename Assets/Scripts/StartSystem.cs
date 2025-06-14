@@ -11,7 +11,7 @@ public class StartSystem : MonoBehaviour
 
     public void StartButton()
     {
-        SceneManager.LoadScene("이동할 씬 네임 혹은 숫자");
+        SceneManager.LoadScene(1);
     }
 
     public void RankingOpen()
