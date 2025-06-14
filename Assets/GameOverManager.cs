@@ -1,4 +1,5 @@
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -11,6 +12,12 @@ public class GameOverManager : MonoBehaviour
     public GameObject chooseUI;
     public TextMeshProUGUI nameText;
     public TextMeshProUGUI scoreText;
+    public GameObject countText_Obj;
+
+    public bool isCountCheck;
+    public bool isGameOver;
+
+    public float timeCount;
 
     private void Awake()
     {
@@ -41,6 +48,29 @@ public class GameOverManager : MonoBehaviour
     public void GameOver()
     {
         gameOverUI.SetActive(true);
-        scoreText.text = ScoreManager.Instance.Score + " 점";
+        scoreText.text = ScoreManager.Instance.Score + " Score";
+    }
+
+    public void DeadCounting()
+    {
+        timeCount += Time.deltaTime;
+
+        if (!countText_Obj.activeSelf)
+        {
+            countText_Obj.SetActive(true);
+        }
+
+        if (10 - timeCount < -0.1f)
+        {
+            isGameOver = true;
+            Debug.Log("게임오버");
+            GameOver();
+        }
+
+        else
+        {
+            if (10 - timeCount < 0) countText_Obj.GetComponent<TextMeshProUGUI>().text = "0";
+            else countText_Obj.GetComponent<TextMeshProUGUI>().text = (10 - timeCount).ToString("F1");
+        }
     }
 }

@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 
 public class MonsterManager : MonoBehaviour
@@ -24,8 +25,6 @@ public class MonsterManager : MonoBehaviour
     [SerializeField]
     Transform spawnPos;
 
-    public bool isGameOver;
-
     private void Awake()
     {
         if (instance == null)
@@ -34,19 +33,28 @@ public class MonsterManager : MonoBehaviour
 
     }
 
-    public void GameOver()
+    private void Update()
     {
-        if(currentMonsterCnt > 20 && !isGameOver)
+        if (currentMonsterCnt > 20 && !GameOverManager.Instance.isGameOver)
         {
-            Debug.Log("게임 오버");
-            GameOverManager.Instance.GameOver();
-            isGameOver = true;
+            if (!GameOverManager.Instance.isCountCheck) GameOverManager.Instance.isCountCheck = true;
+            else
+            {
+                Debug.Log("게임 오버카운팅");
+                GameOverManager.Instance.DeadCounting();
+            }
+        }
+        else if(currentMonsterCnt <= 20 && GameOverManager.Instance.isCountCheck)
+        {
+            GameOverManager.Instance.isCountCheck = false;
+            GameOverManager.Instance.timeCount = 0;
+            GameOverManager.Instance.countText_Obj.SetActive(false);
         }
     }
 
     public void SpawnMonster()
     {
-        if (isGameOver) return;
+        if (GameOverManager.Instance.isGameOver) return;
 
         GameObject spawnedM = Instantiate(monster_normal, spawnPos.position, spawnPos.rotation);
         Monster m = spawnedM.GetComponent<Monster>();
@@ -56,13 +64,11 @@ public class MonsterManager : MonoBehaviour
         UIManager.Instance.MonsterCounting(currentMonsterCnt);
 
         Debug.Log($"몬스터 체력 {hp}");
-
-        GameOver();
     }
 
     public void SpawnBoss()
     {
-        if (isGameOver) return;
+        if (GameOverManager.Instance.isGameOver) return;
 
         GameObject spawnedM = Instantiate(monster_boss, spawnPos.position, spawnPos.rotation);
         Monster m = spawnedM.GetComponent<Monster>();
@@ -70,8 +76,6 @@ public class MonsterManager : MonoBehaviour
         m.Init(3, hp*10, spawnPos.GetComponent<MovementTarget>(),true);
         monsters.Add(m);
         UIManager.Instance.MonsterCounting(currentMonsterCnt);
-
-        GameOver();
     }
 
     // 몬스터가 피해 받아서 사라질 때

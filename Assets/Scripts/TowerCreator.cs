@@ -13,7 +13,7 @@ public class TowerCreator : MonoBehaviour
 
     public void CreateRandomUnit()
     {
-        if (MonsterManager.Instance.isGameOver) return;
+        if (GameOverManager.Instance.isGameOver) return;
 
         if (MoneyManager.Instance.Gold >= spawnGold)
         {

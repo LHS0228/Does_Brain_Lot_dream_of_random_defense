@@ -73,6 +73,8 @@ public class Monster : MonoBehaviour
 
     public void Dead()
     {
+        if (GameOverManager.Instance.isGameOver) return;
+
         MoneyManager.Instance.UpdateGold(earnGold);
         if(Random.value <= gemRatio)
         {
