@@ -71,7 +71,7 @@ public class PlayerInput : MonoBehaviour
                             EffectManager.Instance.SpawnEffect(EffectName.dust, hit.collider.gameObject.transform.position);
 
                             //업그레이드 부분
-                            hitTile.GetTower().StateSetting(0, 1, 1, hitTile.GetTower().towerStar + 1);
+                            hitTile.GetTower().StateSetting(0, 1, 1, hitTile.GetTower().StarUpgrade());
                         }
                     }
                     else

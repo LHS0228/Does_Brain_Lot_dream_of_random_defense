@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -41,12 +42,37 @@ public class StartSystem : MonoBehaviour
         }
 
         string text = "<size=150%><b>★ 랭킹 TOP 5 ★</b></size>\n\n";
-        int count = Mathf.Min(5, ranking.rankings.Length);
+        int maxCount = 5;
 
-        for (int i = 0; i < count; i++)
+        // 중복 제거: 이름+점수가 같은 항목은 하나만 유지
+        List<string> seenEntries = new List<string>();
+        List<RankingEntry> uniqueRankings = new List<RankingEntry>();
+
+        foreach (var entry in ranking.rankings)
         {
-            var entry = ranking.rankings[i];
-            text += $"{i + 1}위  {entry.player_name}  -  {entry.score}점\n";
+            string key = entry.player_name + "_" + entry.score;
+            if (!seenEntries.Contains(key))
+            {
+                seenEntries.Add(key);
+                uniqueRankings.Add(entry);
+            }
+
+            if (uniqueRankings.Count >= maxCount)
+                break;
+        }
+
+        // 출력
+        for (int i = 0; i < maxCount; i++)
+        {
+            if (i < uniqueRankings.Count)
+            {
+                var entry = uniqueRankings[i];
+                text += $"{i + 1}위  {entry.player_name}  -  {entry.score}점\n\n";
+            }
+            else
+            {
+                text += $"{i + 1}위  -----  -  ---------\n\n";
+            }
         }
 
         ranking_In_Text.text = text;
