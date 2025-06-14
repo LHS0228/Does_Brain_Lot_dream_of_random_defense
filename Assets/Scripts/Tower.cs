@@ -52,12 +52,10 @@ public class Tower : MonoBehaviour
         
     }
 
-    public int StarUpgrade()
+    public void StarUpgrade()
     {
         towerStar++;
         AttackReloding();
-
-        return towerStar;
     }
 
     public virtual void Init(Tile tile)
@@ -92,15 +90,6 @@ public class Tower : MonoBehaviour
         curTile.OutPlace();
     }
 
-    public void StateSetting(float _baseAttackDamage, float _attackRange, float _attackCooltime, int _towerStar)
-    {
-        baseAttackDamage = _baseAttackDamage;
-        attackRange = _attackRange;
-        attackCooltime = _attackCooltime;
-        towerStar = _towerStar;
-
-        AttackReloding();
-    }
 
     public void AttackReloding()
     {
