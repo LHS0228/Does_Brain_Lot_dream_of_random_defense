@@ -28,7 +28,7 @@ public class Tralarare : Tower
     {
         attackType = AttackType.SingleTarget;
         towerType = TowerType.Tralarare;
-        attackDamage = 200f;
+        baseAttackDamage = 200f;
         attackRange = 1.5f;
         attackCooltime = 0.6666f;
         towerStar = 1;

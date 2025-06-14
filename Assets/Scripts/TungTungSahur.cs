@@ -14,7 +14,7 @@ public class TungTungSahur : Tower
     {
         attackType = AttackType.MultiTarget;
         towerType = TowerType.TungTungSahur;
-        attackDamage = 180f;
+        baseAttackDamage = 180f;
         attackRange = 1.5f;
         attackCooltime = 1f;
         towerStar = 1;
