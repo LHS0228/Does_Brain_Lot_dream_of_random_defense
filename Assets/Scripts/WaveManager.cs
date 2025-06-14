@@ -45,15 +45,20 @@ public class WaveManager : MonoBehaviour
         if (isWaveOngoing == false) return;
 
         remainWaveTime -= Time.deltaTime;
-        if(remainWaveTime <= 0)
+        if (remainWaveTime <= 0)
         {
             waveCnt++;
             UIManager.Instance.WaveCounting(WaveCnt);
             if (waveCnt % 5 == 0)
-                MonsterManager.Instance.SpawnBoss();
-            else
+            {
                 StartCoroutine(MonsterManager.Instance.MonsterSpawnRoutine());
-                remainWaveTime = oneWaveTime;
+                MonsterManager.Instance.SpawnBoss();
+            }
+            else
+            {
+                StartCoroutine(MonsterManager.Instance.MonsterSpawnRoutine());
+            }
+            remainWaveTime = oneWaveTime;
         }
         
     }
