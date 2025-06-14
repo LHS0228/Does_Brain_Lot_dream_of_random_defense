@@ -39,7 +39,7 @@ public class MonsterManager : MonoBehaviour
         if(currentMonsterCnt > 20 && !isGameOver)
         {
             Debug.Log("게임 오버");
-
+            GameOverManager.Instance.GameOver();
             isGameOver = true;
         }
     }
