@@ -12,6 +12,8 @@ public class UIManager : MonoBehaviour
     public TextMeshProUGUI GoldUI;
     public TextMeshProUGUI GemUI;
     public TextMeshProUGUI SpawnGoldUI;
+    public TextMeshProUGUI ScoreUI;
+
     private void Awake()
     {
         if (instance == null)
@@ -52,5 +54,10 @@ public class UIManager : MonoBehaviour
     public void GemUIUpdate()
     {
         GemUI.text = $"{MoneyManager.Instance.Gem} Gem";
+    }
+
+    public void ScoreUIUpdate()
+    {
+        ScoreUI.text = $"{ScoreManager.Instance.Score} Score";
     }
 }

@@ -77,14 +77,17 @@ public class Monster : MonoBehaviour
         if(Random.value <= gemRatio)
         {
             MoneyManager.Instance.UpdateGem(1);
-            ScoreManager.Instance.IncreaseScore(5);
         }
 
         if(isBoss)
         {
             MoneyManager.Instance.UpdateGem(3);
-            ScoreManager.Instance.IncreaseScore(1000);
         }
+
+        if(isBoss) ScoreManager.Instance.IncreaseScore(1000);
+        else ScoreManager.Instance.IncreaseScore(5);
+
+        UIManager.Instance.ScoreUIUpdate();
         MonsterManager.Instance.RemoveMonster(this);
     }
 
